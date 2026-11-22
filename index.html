@@ -157,36 +157,7 @@ h1,h2,h3,p{margin:0}
 .dicc-sin{margin-top:18px;font-size:.95rem;font-weight:600;color:var(--carbon)}
 .dicc-sin b{color:var(--rojo)}
 
-/* ===== Armado (scroll) ===== */
 .ola{height:22px;background:radial-gradient(circle at 14px 0,var(--terracota) 14px,transparent 15px) 0 0/28px 22px repeat-x}
-.ola--abajo{background:radial-gradient(circle at 14px 22px,var(--crema) 14px,transparent 15px) 0 0/28px 22px repeat-x}
-.armado{position:relative;background:var(--zaatar);color:var(--crema);height:430vh}
-.armado-pega{position:sticky;top:0;height:100vh;height:100dvh;display:grid;grid-template-rows:auto 1fr;padding:clamp(78px,11vh,96px) var(--pad) 30px;overflow:hidden}
-.armado-cab .tag{color:var(--azafran)}
-.armado h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2rem,6.4vw,5.2rem);line-height:.92;letter-spacing:-.03em;margin-top:8px}
-.armado-cuerpo{display:grid;gap:10px;min-height:0;align-items:end;grid-template-rows:1fr auto}
-.mesa{position:relative;min-height:0;display:grid;place-items:center}
-.mesa svg{width:min(560px,100%);max-height:100%;height:auto;overflow:visible}
-.capa{transition:transform 800ms var(--ease-out),opacity 500ms ease;transform-box:fill-box;transform-origin:center}
-.js .capa{opacity:0;transform:translateY(-90px) scale(.96)}
-.js .capa.on{opacity:1;transform:none}
-.js .horno-fuego{opacity:0;transform:translateY(30px) scaleY(.6);transform-origin:50% 100%;transform-box:fill-box;transition:opacity 500ms,transform 700ms var(--ease-out)}
-.js .horno-fuego.on{opacity:1;transform:none}
-.dorado{opacity:0;transition:opacity 900ms ease}
-.dorado.on{opacity:1}
-.pasos{list-style:none;margin:0;padding:0;display:grid;gap:2px}
-.pasos li{display:grid;grid-template-columns:2.2em 1fr;align-items:baseline;opacity:.45;transition:opacity 300ms,transform 400ms var(--ease-out);font-family:var(--display);text-transform:uppercase;font-size:clamp(1.15rem,3vw,1.9rem);line-height:1.15}
-.pasos li small{font-family:var(--texto);font-weight:800;font-size:.7rem;letter-spacing:.1em;color:var(--azafran)}
-.pasos li p{font-family:var(--texto);text-transform:none;font-weight:600;font-size:.95rem;max-height:0;overflow:hidden;transition:max-height 400ms var(--ease-out);grid-column:2}
-.pasos li.on{opacity:1;transform:translateX(8px)}
-.pasos li.on p{max-height:3em}
-@media (min-width:900px){
-  .armado-cuerpo{grid-template-columns:.9fr 1.1fr;grid-template-rows:none;align-items:center;gap:30px}
-  .pasos{order:-1}
-}
-.armado-barra{position:absolute;left:var(--pad);right:var(--pad);bottom:18px;height:4px;background:rgba(246,234,216,.25);border-radius:4px;overflow:hidden}
-.armado-barra i{display:block;height:100%;background:var(--azafran);transform-origin:left;transform:scaleX(0)}
-
 /* ===== Mosaico ===== */
 .mucho{background:var(--crema);padding:clamp(56px,8vw,120px) 0 clamp(60px,8vw,110px);position:relative}
 .mucho-cab{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,56px)}
@@ -296,9 +267,8 @@ h1,h2,h3,p{margin:0}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .js .rev,.js .capa,.js .horno-fuego{opacity:1;transform:none}
+  .js .rev,.js .capa
   .cinta-pista{animation:none}
-  .armado{height:auto}.armado-pega{position:relative;height:auto;min-height:100svh}
 }
 
 </style>
@@ -408,81 +378,7 @@ h1,h2,h3,p{margin:0}
     </div>
   </section>
 
-  <!-- ============ ARMADO ============ -->
-  <section class="armado" id="armado" aria-labelledby="t-armado">
-    <div class="ola" style="position:absolute;top:0;left:0;right:0;z-index:2" aria-hidden="true"></div>
-    <div class="armado-pega">
-      <div class="armado-cab">
-        <span class="tag">Masa · Zaatar · Queso</span>
-        <h2 id="t-armado">Un manoushe,<br>es simple.</h2>
-      </div>
-      <div class="armado-cuerpo">
-        <ol class="pasos" id="pasos">
-          <li data-s="1"><small>01</small>La masa<p>Artesanal. Es donde empieza todo.</p></li>
-          <li data-s="2"><small>02</small>El zaatar<p>Aceite y especias, bien repartidos.</p></li>
-          <li data-s="3"><small>03</small>El queso<p>Que se derrite. Despacito.</p></li>
-          <li data-s="4"><small>04</small>Carne y verduras<p>Ingredientes frescos.</p></li>
-          <li data-s="5"><small>05</small>¡Al horno!<p>Horneado al momento. Y a comer caliente.</p></li>
-        </ol>
-        <div class="mesa">
-          <svg viewBox="0 0 400 320" role="img" aria-label="Un manoushe armándose capa por capa: masa, zaatar, queso, carne y verduras, y al horno">
-            <!-- bandeja -->
-            <ellipse cx="200" cy="246" rx="192" ry="54" fill="#17110d"/>
-            <ellipse cx="200" cy="238" rx="192" ry="54" fill="#2b221c"/>
-            <ellipse cx="200" cy="238" rx="176" ry="46" fill="#1d1612"/>
-            <!-- fuego -->
-            <g class="horno-fuego" data-p="5">
-              <path d="M60 300 C50 270 70 262 66 240 C86 258 96 280 84 300Z" fill="#ee7a26"/>
-              <path d="M150 306 C138 272 164 262 156 232 C182 256 192 284 176 306Z" fill="#f7b52c"/>
-              <path d="M250 306 C238 270 262 262 256 232 C282 256 292 284 274 306Z" fill="#ee7a26"/>
-              <path d="M330 300 C322 272 342 266 336 244 C358 262 364 284 352 300Z" fill="#f7b52c"/>
-              <path d="M150 306 C146 290 160 284 158 270 C172 282 174 296 168 306Z" fill="#c0391f"/>
-              <path d="M250 306 C246 290 260 284 258 270 C272 282 274 296 268 306Z" fill="#c0391f"/>
-            </g>
-            <!-- masa -->
-            <g class="capa" data-p="1">
-              <ellipse cx="200" cy="222" rx="150" ry="46" fill="#c99a5b"/>
-              <ellipse cx="200" cy="212" rx="150" ry="46" fill="#efcf97"/>
-              <ellipse cx="200" cy="212" rx="150" ry="46" fill="none" stroke="#fff3d6" stroke-width="3" opacity=".7"/>
-              <ellipse class="dorado" data-p="5" cx="200" cy="212" rx="150" ry="46" fill="none" stroke="#c9792b" stroke-width="12" opacity="0"/>
-            </g>
-            <!-- zaatar -->
-            <g class="capa" data-p="2">
-              <ellipse cx="200" cy="210" rx="128" ry="37" fill="#6c8a2f"/>
-              <ellipse cx="180" cy="203" rx="70" ry="14" fill="#8fae4c" opacity=".55"/>
-              <g fill="#3f5a1a"><circle cx="120" cy="212" r="2.4"/><circle cx="146" cy="200" r="2.4"/><circle cx="170" cy="218" r="2.4"/><circle cx="198" cy="204" r="2.4"/><circle cx="226" cy="216" r="2.4"/><circle cx="252" cy="203" r="2.4"/><circle cx="278" cy="214" r="2.4"/><circle cx="160" cy="226" r="2.4"/><circle cx="236" cy="226" r="2.4"/><circle cx="210" cy="192" r="2.4"/></g>
-              <g fill="#f6ead8"><circle cx="136" cy="214" r="1.8"/><circle cx="188" cy="214" r="1.8"/><circle cx="244" cy="210" r="1.8"/><circle cx="214" cy="224" r="1.8"/><circle cx="268" cy="206" r="1.8"/></g>
-            </g>
-            <!-- queso -->
-            <g class="capa" data-p="3">
-              <path d="M110 208 Q130 188 168 196 Q196 186 232 194 Q268 190 290 208 Q276 226 236 224 Q200 234 164 224 Q126 226 110 208Z" fill="#f8c545"/>
-              <path d="M126 206 Q150 194 176 200 Q200 192 226 198" stroke="#fde59a" stroke-width="5" fill="none" stroke-linecap="round"/>
-              <circle cx="258" cy="210" r="5" fill="#e7a824"/><circle cx="150" cy="214" r="4" fill="#e7a824"/>
-            </g>
-            <!-- carne y verduras -->
-            <g class="capa" data-p="4">
-              <g fill="#7a3418"><circle cx="140" cy="206" r="5"/><circle cx="160" cy="214" r="5.5"/><circle cx="214" cy="212" r="5"/><circle cx="262" cy="214" r="5.5"/><circle cx="238" cy="200" r="4.5"/></g>
-              <circle cx="188" cy="196" r="15" fill="#d4361f"/><circle cx="188" cy="196" r="10" fill="#ef6b4e"/>
-              <circle cx="248" cy="208" r="14" fill="#d4361f"/><circle cx="248" cy="208" r="9" fill="#ef6b4e"/>
-              <circle cx="152" cy="200" r="12" fill="#9bc15f"/><circle cx="152" cy="200" r="8" fill="#d6e9a6"/>
-              <path d="M206 224 C196 214 208 202 222 208 C226 218 216 226 206 224Z" fill="#3f9a5a"/>
-              <path d="M120 214 C112 206 122 198 132 204 C134 212 128 218 120 214Z" fill="#3f9a5a"/>
-              <path d="M274 202 C266 194 276 188 284 194 C286 200 281 205 274 202Z" fill="#3f9a5a"/>
-            </g>
-            <!-- vapor -->
-            <g class="horno-fuego" data-p="5" fill="none" stroke="#f6ead8" stroke-width="5" stroke-linecap="round" opacity=".85">
-              <path d="M150 168 q-12 -18 0 -32 q12 -14 0 -30"/>
-              <path d="M200 160 q-12 -18 0 -32 q12 -14 0 -30"/>
-              <path d="M250 168 q-12 -18 0 -32 q12 -14 0 -30"/>
-            </g>
-          </svg>
-        </div>
-      </div>
-      <div class="armado-barra" aria-hidden="true"><i id="barra"></i></div>
-    </div>
-  </section>
-  <div class="ola ola--abajo" style="background:radial-gradient(circle at 14px 22px,var(--zaatar) 14px,transparent 15px) 0 0/28px 22px repeat-x;margin-top:-1px" aria-hidden="true"></div>
-
+  <div class="ola" aria-hidden="true"></div>
   <!-- ============ MOSAICO ============ -->
   <section class="mucho" id="galeria" aria-labelledby="t-mucho">
     <div class="wrap">
@@ -739,14 +635,7 @@ h1,h2,h3,p{margin:0}
 
   /* ---------- Todo lo que depende del scroll ---------- */
   var vh = w.innerHeight, ticking = false;
-  var ings = $$(".ing"), armado = $("#armado"), pasos = $$("#pasos li"), capas = $$("[data-p]", armado || d), barra = $("#barra"), dock = $("#dock"), hero = $(".hero");
-  var pasoAct = 0;
-  var fijar = function(s){
-    if (s === pasoAct) return; pasoAct = s;
-    pasos.forEach(function(li){ li.classList.toggle("on", Number(li.getAttribute("data-s")) === s); });
-    capas.forEach(function(c){ c.classList.toggle("on", Number(c.getAttribute("data-p")) <= s); });
-  };
-  if (reduce) { capas.forEach(function(c){ c.classList.add("on"); }); pasos.forEach(function(li){ li.classList.add("on"); }); }
+  var ings = $$(".ing"), dock = $("#dock"), hero = $(".hero");
 
   var actualizar = function(){
     ticking = false;
@@ -761,14 +650,6 @@ h1,h2,h3,p{margin:0}
         var p = Math.min(1, Math.max(0, (ini - r.top) / ((ini - fin) + r.height * .6)));
         var n = Math.round(p * palabras.length);
         for (var i = 0; i < palabras.length; i++) palabras[i].classList.toggle("on", i < n);
-      }
-      /* armado */
-      if (armado) {
-        var a = armado.getBoundingClientRect();
-        var total = a.height - vh;
-        var q = Math.min(1, Math.max(0, -a.top / total));
-        if (barra) barra.style.transform = "scaleX(" + q.toFixed(3) + ")";
-        fijar(a.top > vh * .4 ? 0 : Math.min(5, 1 + Math.floor(q * 5.2)));
       }
     }
     /* botón fijo en móvil */
