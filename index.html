@@ -30,7 +30,7 @@
   --pad:clamp(18px,4vw,56px);
 }
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-padding-top:20px}
+html{overflow-x:clip;-webkit-text-size-adjust:100%;scroll-padding-top:20px}
 body{margin:0;background:var(--crema);color:var(--carbon);font-family:var(--texto);font-size:1.0625rem;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
 img,svg{max-width:100%}
 img{display:block}
@@ -162,9 +162,9 @@ h1,h2,h3,p{margin:0}
 .mucho{background:var(--crema);padding:clamp(56px,8vw,120px) 0 clamp(60px,8vw,110px);position:relative}
 .mucho-cab{display:grid;gap:12px;margin-bottom:clamp(28px,4vw,56px)}
 .mucho-cab .tag{color:var(--terracota)}
-.mucho h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,11vw,9.5rem);line-height:.84;letter-spacing:-.045em;color:var(--rojo)}
+.mucho h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.6rem,11vw,9.5rem);line-height:.95;letter-spacing:-.045em;color:var(--rojo)}
 .mucho h2 em{font-style:normal;color:var(--zaatar)}
-.mosaico{display:grid;grid-template-columns:repeat(2,1fr);gap:clamp(12px,2vw,26px)}
+.mosaico{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:clamp(12px,2vw,26px)}
 .tarj{position:relative;background:var(--c,var(--azafran));padding:clamp(8px,1vw,12px);border-radius:18px;rotate:var(--g,0deg);transition:transform 350ms var(--ease-out),rotate 350ms var(--ease-out);box-shadow:var(--sombra)}
 .tarj:nth-child(1){--c:var(--azafran);--g:-1.6deg}
 .tarj:nth-child(2){--c:var(--terracota);--g:1.4deg}
@@ -177,11 +177,13 @@ h1,h2,h3,p{margin:0}
 .tarj-n{position:absolute;top:-10px;left:-6px;background:var(--crema);color:var(--brasa);font-family:var(--display);font-size:1.15rem;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;box-shadow:0 6px 14px -6px rgba(0,0,0,.5);rotate:-8deg}
 .tarj figcaption{padding:12px 6px 4px;color:var(--crema)}
 .tarj:nth-child(1) figcaption,.tarj:nth-child(6) figcaption{color:var(--carbon)}
+.tarj{min-width:0}
+.tarj h3,.tarj p{overflow-wrap:anywhere;hyphens:auto}
 .tarj h3{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(1.05rem,2.2vw,1.5rem);line-height:1}
 .tarj p{font-size:.9rem;font-weight:600;margin-top:4px;opacity:.92}
 @media (hover:hover) and (pointer:fine){.tarj:hover{transform:translateY(-8px);rotate:0deg}.tarj:hover img{transform:scale(1.06)}}
 @media (min-width:900px){
-  .mosaico{grid-template-columns:repeat(12,1fr);align-items:start}
+  .mosaico{grid-template-columns:repeat(12,minmax(0,1fr));align-items:start}
   .tarj:nth-child(1){grid-column:1/span 4;margin-top:40px}
   .tarj:nth-child(2){grid-column:5/span 4}
   .tarj:nth-child(3){grid-column:9/span 4;margin-top:70px}
@@ -195,7 +197,7 @@ h1,h2,h3,p{margin:0}
 .carta-g{position:absolute;right:-6%;top:-10%;font-family:var(--arabe);font-size:clamp(10rem,34vw,30rem);line-height:1;color:rgba(246,234,216,.06);pointer-events:none;rotate:8deg}
 .carta .wrap{position:relative;display:grid;gap:26px}
 .carta .tag{color:var(--azafran)}
-.carta h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.3rem,8.4vw,7rem);line-height:.9;letter-spacing:-.035em}
+.carta h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.3rem,8.4vw,7rem);line-height:.98;letter-spacing:-.035em}
 .carta h2 em{font-style:normal;color:var(--azafran)}
 .carta-sub{font-weight:700;font-size:clamp(1.05rem,2vw,1.4rem);max-width:34ch}
 .platillos{list-style:none;margin:0;padding:0;display:grid;gap:16px;max-width:640px}
@@ -211,7 +213,7 @@ h1,h2,h3,p{margin:0}
 .pide{background:var(--terracota);color:var(--crema);padding:clamp(60px,8vw,120px) 0}
 .pide-cab{display:grid;gap:12px;margin-bottom:clamp(26px,4vw,50px)}
 .pide-cab .tag{color:var(--azafran)}
-.pide h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7.4rem);line-height:.88;letter-spacing:-.04em}
+.pide h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7.4rem);line-height:.98;letter-spacing:-.04em}
 .tres{list-style:none;margin:0;padding:0;display:grid;gap:18px}
 .tres li{position:relative;background:var(--b);color:var(--f);border-radius:22px;padding:clamp(22px,3vw,34px);display:grid;gap:8px;min-height:190px;align-content:start;rotate:var(--g);box-shadow:0 24px 40px -26px rgba(0,0,0,.7)}
 .tres li:nth-child(1){--b:var(--crema);--f:var(--brasa);--g:-1.2deg}
@@ -227,7 +229,7 @@ h1,h2,h3,p{margin:0}
 /* ===== Horario ===== */
 .visita{background:var(--crema);padding:clamp(60px,8vw,120px) 0;position:relative;overflow:hidden}
 .visita-grid{display:grid;gap:clamp(28px,5vw,60px)}
-.visita h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7.4rem);line-height:.88;letter-spacing:-.04em;color:var(--rojo)}
+.visita h2{font-family:var(--display);font-weight:400;text-transform:uppercase;font-size:clamp(2.4rem,9vw,7.4rem);line-height:.98;letter-spacing:-.04em;color:var(--rojo)}
 .visita h2 em{font-style:normal;color:var(--zaatar)}
 .visita .tag{color:var(--terracota);display:block;margin-bottom:12px}
 .horas{margin:0;display:grid;gap:12px}
@@ -443,7 +445,7 @@ h1,h2,h3,p{margin:0}
   <section class="carta" id="carta" aria-labelledby="t-carta">
     <div class="carta-g" lang="ar" dir="rtl" aria-hidden="true">منقوشة</div>
     <div class="wrap">
-      <span class="tag rev">Pas de carte ici</span>
+      <span class="tag rev">El menú</span>
       <h2 id="t-carta" class="rev">¿La carta?<br><em>Te espera por WhatsApp.</em></h2>
       <p class="carta-sub rev">Escríbenos y te decimos qué hay hoy en el horno.</p>
 
